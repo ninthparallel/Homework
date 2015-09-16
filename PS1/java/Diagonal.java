@@ -33,9 +33,30 @@ PLEASE LOOK AT PS1.txt FOR MORE DETAILS!!!
 */
 public class Diagonal {
 
-	public static int diagonal(int[][] input) {
-		//YOUR CODE HERE
-		return 0;
+	public static String diagonal(int[][] input, int dimension) {
+		int diagonalOne = 0, diagonalTwo = 0, d = 0, u = dimension-1;
+		System.out.print("(");
+		while(d < dimension){
+			System.out.print(input[d][d]);
+			diagonalOne += input[d][d];
+			if(d != dimension-1){
+				System.out.print("+");
+			}
+			d++;
+		}
+		System.out.print(")*(");
+		d = 0;
+		while(u >= 0){
+			System.out.print(input[u][d]);
+			diagonalTwo += input[u][d];
+			if(u != 0){
+				System.out.print("+");
+			}
+			u--;
+			d++;
+		}
+		System.out.print(") = " + diagonalOne*diagonalTwo);
+		return "";
 	}
 
 
@@ -55,7 +76,9 @@ public class Diagonal {
 						matrix[j][k] = scan.nextInt();
 					}
 				}
-				System.out.println(diagonal(matrix));
+				if(N > 0){
+					System.out.println(diagonal(matrix, N));
+				}
 			}
 			scan.close();
 		}

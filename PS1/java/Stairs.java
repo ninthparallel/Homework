@@ -17,11 +17,11 @@ Question 3
 
 Given an integer input N, print a staircase out of height N. For example, given the input 4, print out the following staircase:
 
-    #
-   ##
-  ###
- ####
-#####
+
+   #
+  ##
+ ###
+####
 
 
 PLEASE LOOK AT PS1.txt FOR MORE DETAILS!!!
@@ -30,10 +30,28 @@ PLEASE LOOK AT PS1.txt FOR MORE DETAILS!!!
 
 */
 public class Stairs {
-
-
+	
+	static int stairs;
+	static int spacesLeft;
+	static int counter;
 	public static void stairs(int input) {
-		//YOUR CODE HERE
+		counter = 1;
+		stairs = 1;
+		spacesLeft = input-1;
+		while(counter <= input){
+			while(spacesLeft > 0){
+				System.out.print(" ");
+				spacesLeft--;
+			}
+			while(stairs <= counter){
+				System.out.print("#");
+				stairs++;
+			}
+			System.out.println();
+			counter++;
+			spacesLeft = input-counter;
+			stairs = 1;
+		}
 		return;
 	}
 
@@ -45,7 +63,10 @@ public class Stairs {
 			int numberOfCases = scan.nextInt();
 			for(int i = 0; i < numberOfCases; i++) {
 				int height = scan.nextInt();
-				stairs(height);
+				if(height > 0){
+					stairs(height);
+					System.out.println();
+				}
 			}
 		}
 		catch (FileNotFoundException e) {
